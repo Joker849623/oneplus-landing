@@ -76,7 +76,7 @@ document.getElementById("orderForm").addEventListener("submit", function(e) {
   const token = "7605150991:AAFrvtRMehvQfI1SzyAGgHOXqTxgPH_98";
   const chatId = "5440839461";
 
-  fetch(`https://api.telegram.org/bot$7605150991:AAFrvtRMehvQfI1SzyAGgHOXqTHxpgPH_98/sendMessage`, {
+  fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -93,10 +93,16 @@ document.getElementById("orderForm").addEventListener("submit", function(e) {
       document.getElementById("orderForm").reset();
     } else {
       alert("Ошибка при отправке. Попробуйте позже.");
+      console.error(data);
     }
+  })
+  .catch(error => {
+    alert("Сетевая ошибка при отправке.");
+    console.error(error);
   });
 });
 </script>
+
 
 </body>
 </html>
